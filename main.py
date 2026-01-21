@@ -59,7 +59,7 @@ async def get_og_metadata(url: str):
         if isinstance(prop, list):
             prop = prop[0] if prop else ""
         if isinstance(prop, str) and prop.startswith("og:"):
-            og_data[prop] = tag.get("content", "")
+            og_data[prop.replace("og:", "")] = tag.get("content", "")
 
     # Store in cache
     with _og_cache_lock:
