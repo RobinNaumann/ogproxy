@@ -65,4 +65,4 @@ async def get_og_metadata(url: str):
     with _og_cache_lock:
         _og_cache[url] = {"data": og_data, "timestamp": now}
 
-    return JSONResponse(content=og_data)
+    return JSONResponse(content={"data": og_data})
