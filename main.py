@@ -25,6 +25,15 @@ _og_cache_lock = Lock()
 _cache_duration = int(os.getenv("CACHE_MINUTES", "60")) * 60  # minutes to seconds
 
 
+@app.get("/")
+async def root():
+    return {
+        "message": "Open Graph Metadata Proxy is running.",
+        "version": "1.0.0",
+        "source": "https://github.com/robinnaumann/ogproxy",
+    }
+
+
 @app.get("/og")
 async def get_og_metadata(url: str):
     now = time.time()
